@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services | SKATS Travels & Tours</title>
+    <meta name="description"
+        content="Explore our premium travel services including flight booking, visa assistance, and corporate travel management.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;500;600;700&family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+    <!-- Remix Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- GSAP for Animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <style>
+        .service-detail-section {
+            padding: 4rem 0;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        .service-detail-section:last-child {
+            border-bottom: none;
+        }
+        .service-detail-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+        @media (min-width: 768px) {
+            .service-detail-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 4rem;
+            }
+            .service-detail-section:nth-child(even) .service-detail-grid .content-side {
+                order: 2;
+            }
+            .service-detail-section:nth-child(even) .service-detail-grid .image-side {
+                order: 1;
+            }
+        }
+        .image-side img {
+            border-radius: var(--radius-lg);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            height: 400px;
+            width: 100%;
+            object-fit: cover;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <header class="navbar">
+        <div class="container nav-content">
+            <a href="index.html" class="brand-logo">
+                <i class="ri-flight-takeoff-line" style="color: var(--accent-blue); font-size: 1.8rem;"></i>
+                <strong>SKATS</strong> <span>Travels & Tours</span>
+            </a>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="services.html" class="active">Services</a>
+                <a href="tours.html">Tours</a>
+                <a href="destinations.html">Destinations</a>
+                <a href="flights.html">Flight Booking</a>
+                <a href="visa-assistance.html">Visa Assistance</a>
+                <a href="blog.html">Blog</a>
+            </nav>
+            <div class="nav-actions">
+                <a href="contact.html" class="btn btn-primary">Book Your Trip</a>
+            </div>
+            <button class="mobile-menu-btn" aria-label="Toggle menu">
+                <i class="ri-menu-line"></i>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Page Hero -->
+        <section class="hero" style="min-height: 50vh; display:flex; align-items:center; background-image: linear-gradient(rgba(11, 37, 69, 0.8), rgba(11, 37, 69, 0.8)), url('https://images.unsplash.com/photo-1542296332-2e4473faf563?q=80&w=2070&auto=format&fit=crop'); background-size: cover; background-position: center; color: white;">
+            <div class="container fade-up" style="text-align:center;">
+                <span style="color:var(--gold); font-weight:600; text-transform:uppercase; letter-spacing:1px; font-size:0.85rem; display:block; margin-bottom:1rem;">Our Expertise</span>
+                <h1 style="color: white; margin-bottom: 1rem;">Comprehensive Travel Solutions.</h1>
+                <p style="color: rgba(255,255,255,0.8); max-width: 600px; margin: 0 auto; font-size: 1.1rem;">From private jet charters to complex corporate visa processing, we handle every logistical detail of global mobility.</p>
+            </div>
+        </section>
+
+        <div class="container" style="padding-top: 4rem;">
+
+            <!-- Flight Booking -->
+            <section id="flights" class="service-detail-section fade-up">
+                <div class="service-detail-grid">
+                    <div class="content-side">
+                        <span style="color:var(--accent-blue); font-weight:600; text-transform:uppercase; letter-spacing:1px; font-size:0.85rem;">Global Connectivity</span>
+                        <h2 style="font-family: var(--font-heading); color: var(--navy); margin-bottom: 1rem; margin-top:0.5rem;">Flight Booking</h2>
+                        <p style="color: var(--dark-gray); line-height: 1.8; margin-bottom: 1.5rem;">
+                            Access premium fares and optimized routing across all major international carriers. Whether you require first-class commercial transit or private aircraft charters, our agents ensure a seamless booking experience with 24/7 rebooking support for any disruptions.
+                        </p>
+                        <a href="flights.html" class="btn btn-secondary">Search Flights <i class="ri-arrow-right-line"></i></a>
+                    </div>
+                    <div class="image-side">
+                        <img src="https://images.unsplash.com/photo-1540339832862-47466fa8cbdd?q=80&w=1974&auto=format&fit=crop" alt="Premium Flight Interior">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Hotel Reservations -->
+            <section id="hotels" class="service-detail-section fade-up">
+                <div class="service-detail-grid">
+                    <div class="content-side">
+                        <span style="color:var(--accent-blue); font-weight:600; text-transform:uppercase; letter-spacing:1px; font-size:0.85rem;">Luxury Accommodations</span>
+                        <h2 style="font-family: var(--font-heading); color: var(--navy); margin-bottom: 1rem; margin-top:0.5rem;">Hotel Reservations</h2>
+                        <p style="color: var(--dark-gray); line-height: 1.8; margin-bottom: 1.5rem;">
+                            Rest assured in accredited, highly-rated accommodations worldwide. We partner with elite global hotel chains and boutique resorts to secure preferential rates, late check-outs, and room upgrades for our clients.
+                        </p>
+                        <a href="contact.html" class="btn btn-secondary">Request Booking <i class="ri-arrow-right-line"></i></a>
+                    </div>
+                    <div class="image-side">
+                        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=2070&auto=format&fit=crop" alt="Luxury Hotel Resort">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Visa Assistance -->
+            <section id="visa" class="service-detail-section fade-up">
+                <div class="service-detail-grid">
+                    <div class="content-side">
+                        <span style="color:var(--accent-blue); font-weight:600; text-transform:uppercase; letter-spacing:1px; font-size:0.85rem;">Legal & Documentation</span>
+                        <h2 style="font-family: var(--font-heading); color: var(--navy); margin-bottom: 1rem; margin-top:0.5rem;">Visa Assistance</h2>
+                        <p style="color: var(--dark-gray); line-height: 1.8; margin-bottom: 1.5rem;">
+                            Navigate complex embassy requirements with absolute confidence. Our documentation specialists provide rigorous auditing, interview preparation, and filing support to maximize your approval probability for study, work, or tourist visas.
+                        </p>
+                        <a href="visa-assistance.html" class="btn btn-secondary">View Visa Services <i class="ri-arrow-right-line"></i></a>
+                    </div>
+                    <div class="image-side">
+                        <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=2026&auto=format&fit=crop" alt="Passport and Documents">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Corporate Travel -->
+            <section id="corporate" class="service-detail-section fade-up">
+                <div class="service-detail-grid">
+                    <div class="content-side">
+                        <span style="color:var(--accent-blue); font-weight:600; text-transform:uppercase; letter-spacing:1px; font-size:0.85rem;">Business Mobility</span>
+                        <h2 style="font-family: var(--font-heading); color: var(--navy); margin-bottom: 1rem; margin-top:0.5rem;">Corporate Travel</h2>
+                        <p style="color: var(--dark-gray); line-height: 1.8; margin-bottom: 1.5rem;">
+                            Dedicated travel management for executives and delegations. We streamline expense reporting, manage multi-city itineraries, and coordinate high-end airport transfers to ensure your team arrives ready for business.
+                        </p>
+                        <a href="contact.html" class="btn btn-secondary">Consult With Us <i class="ri-arrow-right-line"></i></a>
+                    </div>
+                    <div class="image-side">
+                        <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=2074&auto=format&fit=crop" alt="Corporate Travel Airport Lounge">
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <a href="index.html" class="brand-logo">
+                    <i class="ri-flight-takeoff-line"></i>
+                    <strong>SKATS</strong>
+                </a>
+                <p>Premium aviation services, curated tour packages, and expert international travel consultation.</p>
+                <div style="display:flex; gap:1rem; margin-top:1.5rem;">
+                    <a href="#" style="color:var(--white); font-size:1.2rem;"><i class="ri-facebook-fill"></i></a>
+                    <a href="#" style="color:var(--white); font-size:1.2rem;"><i class="ri-twitter-x-line"></i></a>
+                    <a href="#" style="color:var(--white); font-size:1.2rem;"><i class="ri-instagram-line"></i></a>
+                    <a href="#" style="color:var(--white); font-size:1.2rem;"><i class="ri-linkedin-fill"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-links">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="flights.html">Flight Booking</a></li>
+                    <li><a href="services.html">Hotel Reservations</a></li>
+                    <li><a href="tours.html">Tour Packages</a></li>
+                    <li><a href="visa-assistance.html">Visa Assistance</a></li>
+                    <li><a href="contact.html">Corporate Travel</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-links">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="destinations.html">Destinations</a></li>
+                    <li><a href="blog.html">Travel Guide</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-links">
+                <h4>Contact</h4>
+                <ul>
+                    <li style="display:flex; gap:0.5rem; color:rgba(255,255,255,0.7);"><i class="ri-map-pin-line text-gold"></i> 1 Owo Avenue, Ijapo Estate First Gate, Akure</li>
+                    <li style="display:flex; gap:0.5rem; color:rgba(255,255,255,0.7);"><i class="ri-map-pin-line text-gold"></i> Suite D206, Garki Mall, Abuja</li>
+                    <li style="display:flex; gap:0.5rem; margin-top:1rem;"><i class="ri-phone-line text-gold"></i> <a href="tel:+2348170000057">+234 817 000 0057</a></li>
+                    <li style="display:flex; gap:0.5rem;"><i class="ri-mail-line text-gold"></i> <a href="mailto:Skatsledconsult@gmail.com">Skatsledconsult@gmail.com</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="container" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
+                <span>&copy; 2026 SKATS Travels & Tours. All rights reserved.</span>
+                <div style="display:flex; gap:1.5rem;">
+                    <a href="#" style="color:rgba(255,255,255,0.5);">Privacy Policy</a>
+                    <a href="#" style="color:rgba(255,255,255,0.5);">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

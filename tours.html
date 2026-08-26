@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tours & Packages | SKATS Travels & Tours</title>
+    <meta name="description"
+        content="Explore exclusive, curated tour packages and holidays around the globe with SKATS Travels & Tours.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;500;600;700&family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+    <!-- Remix Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- GSAP for Animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <style>
+        .tour-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+        .tour-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: transform var(--transition-base), box-shadow var(--transition-base);
+            display: flex;
+            flex-direction: column;
+        }
+        .tour-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        .tour-image {
+            position: relative;
+            height: 250px;
+        }
+        .tour-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .tour-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(11, 37, 69, 0.9);
+            color: var(--white);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            backdrop-filter: blur(4px);
+        }
+        .tour-content {
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        .tour-meta {
+            display: flex;
+            gap: 1rem;
+            color: var(--gold);
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        .tour-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+        .tour-content h3 {
+            margin-bottom: 0.75rem;
+            font-size: 1.5rem;
+        }
+        .tour-content p {
+            color: var(--dark-gray);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+        .tour-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--light-gray);
+        }
+        .tour-price {
+            font-family: var(--font-heading);
+            font-size: 1.25rem;
+            color: var(--navy);
+            font-weight: 700;
+        }
+        .tour-price span {
+            font-size: 0.8rem;
+            font-family: var(--font-body);
+            color: var(--medium-gray);
+            font-weight: 400;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <header class="navbar">
+        <div class="container nav-content">
+            <a href="index.html" class="brand-logo">
+                <i class="ri-flight-takeoff-line" style="color: var(--accent-blue); font-size: 1.8rem;"></i>
+                <strong>SKATS</strong> <span>Travels & Tours</span>
+            </a>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="services.html">Services</a>
+                <a href="tours.html" class="active">Tours</a>
+                <a href="destinations.html">Destinations</a>
+                <a href="flights.html">Flight Booking</a>
+                <a href="visa-assistance.html">Visa Assistance</a>
+                <a href="blog.html">Blog</a>
+            </nav>
+            <div class="nav-actions">
+                <a href="contact.html" class="btn btn-primary">Book Your Trip</a>
+            </div>
+            <button class="mobile-menu-btn" aria-label="Toggle menu">
+                <i class="ri-menu-line"></i>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Page Hero -->
+        <section class="hero" style="min-height: 50vh; display:flex; align-items:center; background-image: linear-gradient(rgba(11, 37, 69, 0.7), rgba(11, 37, 69, 0.7)), url('https://images.unsplash.com/photo-1499856871958-5b9627545d1a?q=80&w=2020&auto=format&fit=crop'); background-size: cover; background-position: center; color: white;">
+            <div class="container fade-up" style="text-align:center;">
+                <span style="color:var(--gold); font-weight:600; text-transform:uppercase; letter-spacing:1px; font-size:0.85rem; display:block; margin-bottom:1rem;">Exclusive Packages</span>
+                <h1 style="color: white; margin-bottom: 1rem;">Curated Experiences.</h1>
+                <p style="color: rgba(255,255,255,0.8); max-width: 600px; margin: 0 auto; font-size: 1.1rem;">Discover premium holiday packages carefully designed for the sophisticated traveler.</p>
+            </div>
+        </section>
+
+        <!-- Tours Grid -->
+        <section class="section-padding bg-light">
+            <div class="container">
+                <div class="section-header fade-up">
+                    <h2>Featured Itineraries</h2>
+                    <p style="color:var(--dark-gray);">Browse our highly requested international travel packages.</p>
+                </div>
+
+                <div class="tour-grid fade-up">
+                    
+                    <!-- Tour 1 -->
+                    <div class="tour-card">
+                        <div class="tour-image">
+                            <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=2070&auto=format&fit=crop" alt="Dubai Cityscape">
+                            <div class="tour-badge">Best Seller</div>
+                        </div>
+                        <div class="tour-content">
+                            <div class="tour-meta">
+                                <span><i class="ri-time-line"></i> 5 Days</span>
+                                <span><i class="ri-map-pin-line"></i> UAE</span>
+                            </div>
+                            <h3>Dubai Luxury Escape</h3>
+                            <p>Experience the pinnacle of luxury with desert safaris, 5-star marina accommodations, and exclusive Burj Khalifa dining.</p>
+                            
+                            <ul style="list-style:none; padding:0; margin-bottom:1.5rem; font-size:0.85rem; color:var(--dark-gray);">
+                                <li style="margin-bottom:0.25rem;"><i class="ri-check-line text-gold"></i> Flights Included</li>
+                                <li style="margin-bottom:0.25rem;"><i class="ri-check-line text-gold"></i> 5-Star Hotel</li>
+                                <li><i class="ri-check-line text-gold"></i> Airport Transfers</li>
+                            </ul>
+
+                            <div class="tour-footer">
+                                <div class="tour-price">Request Quote</div>
+                                <a href="contact.html" class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.8rem;">Book Now</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tour 2 -->
+                    <div class="tour-card">
+                        <div class="tour-image">
+                            <img src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?q=80&w=2020&auto=format&fit=crop" alt="Paris Eiffel Tower">
+                        </div>
+                        <div class="tour-content">
+                            <div class="tour-meta">
+                                <span><i class="ri-time-line"></i> 7 Days</span>
+                                <span><i class="ri-map-pin-line"></i> France</span>
+                            </div>
+                            <h3>Parisian Elegance</h3>
+                            <p>A week of romance and culture in Paris. Includes skip-the-line Louvre access, Seine river cruise, and premium boutique hotel stay.</p>
+                            
+                            <ul style="list-style:none; padding:0; margin-bottom:1.5rem; font-size:0.85rem; color:var(--dark-gray);">
+                                <li style="margin-bottom:0.25rem;"><i class="ri-check-line text-gold"></i> Visa Assistance</li>
+                                <li style="margin-bottom:0.25rem;"><i class="ri-check-line text-gold"></i> Guided Tours</li>
+                                <li><i class="ri-check-line text-gold"></i> Daily Breakfast</li>
+                            </ul>
+
+                            <div class="tour-footer">
+                                <div class="tour-price">Request Quote</div>
+                                <a href="contact.html" class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.8rem;">Book Now</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tour 3 -->
+                    <div class="tour-card">
+                        <div class="tour-image">
+                            <img src="https://images.unsplash.com/photo-1514282401047-d79a71a590e8?q=80&w=1965&auto=format&fit=crop" alt="Maldives Ocean Resort">
+                            <div class="tour-badge" style="background:var(--gold); color:var(--navy);">Honeymoon</div>
+                        </div>
+                        <div class="tour-content">
+                            <div class="tour-meta">
+                                <span><i class="ri-time-line"></i> 6 Days</span>
+                                <span><i class="ri-map-pin-line"></i> Maldives</span>
+                            </div>
+                            <h3>Maldives Overwater Retreat</h3>
+                            <p>The ultimate tropical getaway. Enjoy private seaplane transfers, an overwater bungalow, and all-inclusive premium dining.</p>
+                            
+                            <ul style="list-style:none; padding:0; margin-bottom:1.5rem; font-size:0.85rem; color:var(--dark-gray);">
+                                <li style="margin-bottom:0.25rem;"><i class="ri-check-line text-gold"></i> All-Inclusive</li>
+                                <li style="margin-bottom:0.25rem;"><i class="ri-check-line text-gold"></i> Seaplane Transfer</li>
+                                <li><i class="ri-check-line text-gold"></i> Spa Credit</li>
+                            </ul>
+
+                            <div class="tour-footer">
+                                <div class="tour-price">Request Quote</div>
+                                <a href="contact.html" class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.8rem;">Book Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <a href="index.html" class="brand-logo">
+                    <i class="ri-flight-takeoff-line"></i>
+                    <strong>SKATS</strong>
+                </a>
+                <p>Premium aviation services, curated tour packages, and expert international travel consultation.</p>
+                <div style="display:flex; gap:1rem; margin-top:1.5rem;">
+                    <a href="#" style="color:var(--white); font-size:1.2rem;"><i class="ri-facebook-fill"></i></a>
+                    <a href="#" style="color:var(--white); font-size:1.2rem;"><i class="ri-twitter-x-line"></i></a>
+                    <a href="#" style="color:var(--white); font-size:1.2rem;"><i class="ri-instagram-line"></i></a>
+                    <a href="#" style="color:var(--white); font-size:1.2rem;"><i class="ri-linkedin-fill"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-links">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="flights.html">Flight Booking</a></li>
+                    <li><a href="services.html">Hotel Reservations</a></li>
+                    <li><a href="tours.html">Tour Packages</a></li>
+                    <li><a href="visa-assistance.html">Visa Assistance</a></li>
+                    <li><a href="contact.html">Corporate Travel</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-links">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="destinations.html">Destinations</a></li>
+                    <li><a href="blog.html">Travel Guide</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-links">
+                <h4>Contact</h4>
+                <ul>
+                    <li style="display:flex; gap:0.5rem; color:rgba(255,255,255,0.7);"><i class="ri-map-pin-line text-gold"></i> 1 Owo Avenue, Ijapo Estate First Gate, Akure</li>
+                    <li style="display:flex; gap:0.5rem; color:rgba(255,255,255,0.7);"><i class="ri-map-pin-line text-gold"></i> Suite D206, Garki Mall, Abuja</li>
+                    <li style="display:flex; gap:0.5rem; margin-top:1rem;"><i class="ri-phone-line text-gold"></i> <a href="tel:+2348170000057">+234 817 000 0057</a></li>
+                    <li style="display:flex; gap:0.5rem;"><i class="ri-mail-line text-gold"></i> <a href="mailto:Skatsledconsult@gmail.com">Skatsledconsult@gmail.com</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="container" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
+                <span>&copy; 2026 SKATS Travels & Tours. All rights reserved.</span>
+                <div style="display:flex; gap:1.5rem;">
+                    <a href="#" style="color:rgba(255,255,255,0.5);">Privacy Policy</a>
+                    <a href="#" style="color:rgba(255,255,255,0.5);">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

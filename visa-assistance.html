@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visa Assistance | SKATS Travels & Tours</title>
+    <meta name="description" content="Expert visa consultation and documentation assistance for tourist, business, and study visas worldwide.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <style>
+        .visa-type-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 2rem;
+        }
+
+        .visa-type-card {
+            background: var(--white);
+            border-radius: var(--radius-md);
+            padding: 2rem;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+            border-left: 4px solid var(--accent-blue);
+            transition: var(--transition-base);
+        }
+
+        .visa-type-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+        }
+
+        .visa-type-card h4 { color: var(--navy); margin-bottom: 0.5rem; }
+        .visa-type-card p  { color: var(--dark-gray); font-size: 0.9rem; margin:0; }
+
+        .process-step {
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .process-step:last-child { border-bottom: none; }
+
+        .step-number {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--navy);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+            font-family: var(--font-heading);
+        }
+
+        /* Disclaimer */
+        .disclaimer-box {
+            background: rgba(11,37,69,0.05);
+            border: 1px solid rgba(11,37,69,0.12);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .disclaimer-box i { color: var(--navy); font-size: 1.5rem; flex-shrink:0; }
+
+        /* Accordion */
+        .faq-accordion { display: flex; flex-direction: column; gap: 1rem; }
+
+        .faq-item {
+            background: var(--white);
+            border-radius: var(--radius-md);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            width: 100%;
+            background: none;
+            border: none;
+            padding: 1.25rem 1.5rem;
+            text-align: left;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--navy);
+            cursor: pointer;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            padding: 0 1.5rem;
+            color: var(--dark-gray);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .faq-answer.open { max-height: 300px; padding-bottom: 1.25rem; }
+    </style>
+</head>
+
+<body>
+
+    <header class="navbar">
+        <div class="container nav-content">
+            <a href="index.html" class="brand-logo">
+                <i class="ri-flight-takeoff-line" style="color: var(--accent-blue); font-size: 1.8rem;"></i>
+                <strong>SKATS</strong> <span>Travels & Tours</span>
+            </a>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="services.html">Services</a>
+                <a href="tours.html">Tours</a>
+                <a href="destinations.html">Destinations</a>
+                <a href="flights.html">Flight Booking</a>
+                <a href="visa-assistance.html" class="active">Visa Assistance</a>
+                <a href="blog.html">Blog</a>
+            </nav>
+            <div class="nav-actions"><a href="contact.html" class="btn btn-primary">Book Your Trip</a></div>
+            <button class="mobile-menu-btn"><i class="ri-menu-line"></i></button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Page Hero -->
+        <section class="hero" style="min-height: 55vh; display:flex; align-items:center; background-image: linear-gradient(rgba(11,37,69,0.85), rgba(11,37,69,0.85)), url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=2026&auto=format&fit=crop'); background-size:cover; background-position:center; color:white;">
+            <div class="container fade-up" style="text-align:center;">
+                <span style="color:var(--gold); font-weight:600; text-transform:uppercase; letter-spacing:1px; font-size:0.85rem; display:block; margin-bottom:1rem;">Documentation & Legal</span>
+                <h1 style="color:white; margin-bottom:1rem;">Visa Assistance.</h1>
+                <p style="color:rgba(255,255,255,0.8); max-width:640px; margin:0 auto 2rem; font-size:1.05rem;">Expert documentation guidance and application support. We help you present the strongest possible case to embassies and immigration authorities.</p>
+                <div class="disclaimer-box" style="max-width:640px; margin:0 auto; text-align:left;">
+                    <i class="ri-information-line" style="color:var(--gold);"></i>
+                    <p style="color:rgba(255,255,255,0.85); font-size:0.85rem; margin:0;"><strong style="color:var(--gold);">Important Disclaimer:</strong> Visa approval is the sole discretion of the respective embassy or immigration authority. SKATS Travels & Tours provides documentation preparation and guidance only. We cannot and do not guarantee visa approvals.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Visa Types -->
+        <section class="section-padding">
+            <div class="container">
+                <div class="section-header fade-up">
+                    <h2>Visa Types We Assist With</h2>
+                    <p style="color:var(--dark-gray);">Our specialists cover a wide range of visa categories for destinations worldwide.</p>
+                </div>
+
+                <div class="visa-type-grid fade-up">
+                    <div class="visa-type-card">
+                        <i class="ri-sun-line" style="font-size:1.5rem; color:var(--accent-blue); margin-bottom:0.75rem; display:block;"></i>
+                        <h4>Tourist / Visitor Visa</h4>
+                        <p>Short-term leisure travel documentation for holidaymakers and family visits across major global destinations.</p>
+                    </div>
+                    <div class="visa-type-card">
+                        <i class="ri-briefcase-4-line" style="font-size:1.5rem; color:var(--accent-blue); margin-bottom:0.75rem; display:block;"></i>
+                        <h4>Business Visa</h4>
+                        <p>Documentation support for executive visits, trade negotiations, conferences, and professional engagements.</p>
+                    </div>
+                    <div class="visa-type-card">
+                        <i class="ri-graduation-cap-line" style="font-size:1.5rem; color:var(--accent-blue); margin-bottom:0.75rem; display:block;"></i>
+                        <h4>Student / Study Visa</h4>
+                        <p>Comprehensive preparation for university-linked visa applications across the UK, Canada, US, and Europe.</p>
+                    </div>
+                    <div class="visa-type-card">
+                        <i class="ri-tools-line" style="font-size:1.5rem; color:var(--accent-blue); margin-bottom:0.75rem; display:block;"></i>
+                        <h4>Work Permit</h4>
+                        <p>Assistance with employer-sponsored work permits, documentation audits, and co-ordination with sponsors.</p>
+                    </div>
+                    <div class="visa-type-card">
+                        <i class="ri-hospital-line" style="font-size:1.5rem; color:var(--accent-blue); margin-bottom:0.75rem; display:block;"></i>
+                        <h4>Medical Visa</h4>
+                        <p>Streamlined preparation for medical treatment visits, including hospital invitation letter coordination.</p>
+                    </div>
+                    <div class="visa-type-card">
+                        <i class="ri-group-line" style="font-size:1.5rem; color:var(--accent-blue); margin-bottom:0.75rem; display:block;"></i>
+                        <h4>Family Reunion</h4>
+                        <p>Documentation support for family unification and dependent visa applications at major embassies.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Our Process -->
+        <section class="section-padding bg-light">
+            <div class="container">
+                <div class="hero-grid" style="align-items: flex-start;">
+                    <div class="fade-up">
+                        <span style="color:var(--accent-blue); font-weight:600; text-transform:uppercase; letter-spacing:1px; font-size:0.85rem;">How It Works</span>
+                        <h2 style="margin-top:0.5rem;">Our Visa Process</h2>
+
+                        <div>
+                            <div class="process-step">
+                                <div class="step-number">01</div>
+                                <div>
+                                    <h4 style="color:var(--navy); margin-bottom:0.25rem;">Initial Consultation</h4>
+                                    <p style="color:var(--dark-gray); font-size:0.95rem; margin:0;">A visa specialist reviews your travel intent, destination requirements, and current document status.</p>
+                                </div>
+                            </div>
+                            <div class="process-step">
+                                <div class="step-number">02</div>
+                                <div>
+                                    <h4 style="color:var(--navy); margin-bottom:0.25rem;">Document Checklist</h4>
+                                    <p style="color:var(--dark-gray); font-size:0.95rem; margin:0;">We provide a precise, destination-specific checklist of required documents based on the embassy's current guidelines.</p>
+                                </div>
+                            </div>
+                            <div class="process-step">
+                                <div class="step-number">03</div>
+                                <div>
+                                    <h4 style="color:var(--navy); margin-bottom:0.25rem;">Document Audit & Review</h4>
+                                    <p style="color:var(--dark-gray); font-size:0.95rem; margin:0;">Our specialists meticulously audit each document for accuracy, completeness, and embassy compliance.</p>
+                                </div>
+                            </div>
+                            <div class="process-step">
+                                <div class="step-number">04</div>
+                                <div>
+                                    <h4 style="color:var(--navy); margin-bottom:0.25rem;">Application Filing</h4>
+                                    <p style="color:var(--dark-gray); font-size:0.95rem; margin:0;">We coordinate form completion, appointment scheduling, and submission to the relevant embassy or visa center.</p>
+                                </div>
+                            </div>
+                            <div class="process-step">
+                                <div class="step-number">05</div>
+                                <div>
+                                    <h4 style="color:var(--navy); margin-bottom:0.25rem;">Decision & Follow-up</h4>
+                                    <p style="color:var(--dark-gray); font-size:0.95rem; margin:0;">We track your application status and assist with any additional embassy queries or supplemental document requests.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="fade-up">
+                        <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=2026&auto=format&fit=crop" alt="Passport and travel documents" style="border-radius:var(--radius-lg); width:100%; height:500px; object-fit:cover; box-shadow:0 20px 40px rgba(0,0,0,0.1);">
+
+                        <div style="margin-top:2rem; background:var(--navy); color:white; padding:2rem; border-radius:var(--radius-md);">
+                            <h4 style="color:white; margin-bottom:1rem;">Start Your Visa Application</h4>
+                            <p style="color:rgba(255,255,255,0.75); margin-bottom:1.5rem; font-size:0.9rem;">Send us your travel details and an agent will contact you within 24 hours.</p>
+                            <a href="contact.html" class="btn btn-primary" style="width:100%;">Book Visa Consultation <i class="ri-arrow-right-line"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="section-padding">
+            <div class="container" style="max-width:750px;">
+                <div class="section-header fade-up">
+                    <h2>Frequently Asked Questions</h2>
+                </div>
+                <div class="faq-accordion fade-up">
+                    <div class="faq-item">
+                        <button class="faq-question">Can SKATS guarantee my visa approval? <i class="ri-add-line"></i></button>
+                        <div class="faq-answer">No. Visa decisions are entirely at the discretion of the relevant embassy or immigration authority. We enhance the quality of your application, not the authority's decision.</div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">How early should I start the visa process? <i class="ri-add-line"></i></button>
+                        <div class="faq-answer">We recommend starting at least 8–12 weeks before your intended travel date, especially for UK, US, and Canadian visas which often have longer appointment queues.</div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">Do I need to visit your office in person? <i class="ri-add-line"></i></button>
+                        <div class="faq-answer">Not necessarily. Much of the process can be handled remotely via WhatsApp, email, and video calls. We will inform you if any stage requires physical presence.</div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">What if my visa is refused? <i class="ri-add-line"></i></button>
+                        <div class="faq-answer">We will review the refusal letter with you, identify the grounds of refusal, and advise on the strongest path forward — including a strengthened reapplication or an alternative destination.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <a href="index.html" class="brand-logo"><i class="ri-flight-takeoff-line"></i><strong>SKATS</strong></a>
+                <p>Premium aviation services, curated tour packages, and expert international travel consultation.</p>
+            </div>
+            <div class="footer-links"><h4>Services</h4><ul>
+                <li><a href="flights.html">Flight Booking</a></li>
+                <li><a href="tours.html">Tour Packages</a></li>
+                <li><a href="visa-assistance.html">Visa Assistance</a></li>
+            </ul></div>
+            <div class="footer-links"><h4>Company</h4><ul>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="destinations.html">Destinations</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul></div>
+            <div class="footer-links"><h4>Contact</h4><ul>
+                <li style="color:rgba(255,255,255,0.7);"><a href="tel:+2348170000057">+234 817 000 0057</a></li>
+                <li style="color:rgba(255,255,255,0.7);"><a href="mailto:Skatsledconsult@gmail.com">Skatsledconsult@gmail.com</a></li>
+            </ul></div>
+        </div>
+        <div class="footer-bottom"><div class="container"><span>&copy; 2026 SKATS Travels & Tours. All rights reserved.</span></div></div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        document.querySelectorAll('.faq-question').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const answer = btn.nextElementSibling;
+                const icon = btn.querySelector('i');
+                answer.classList.toggle('open');
+                icon.className = answer.classList.contains('open') ? 'ri-subtract-line' : 'ri-add-line';
+            });
+        });
+    </script>
+</body>
+</html>

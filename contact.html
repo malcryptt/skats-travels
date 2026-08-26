@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | SKATS Travels & Tours</title>
+    <meta name="description" content="Get in touch with SKATS Travels & Tours to book your next trip, enquire about visa assistance, or request a custom travel package.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <style>
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 4rem;
+            align-items: flex-start;
+        }
+
+        @media (max-width: 900px) {
+            .contact-grid { grid-template-columns: 1fr; }
+        }
+
+        /* Contact Info Cards */
+        .contact-info-card {
+            background: var(--white);
+            border-radius: var(--radius-md);
+            padding: 1.75rem;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+            display: flex;
+            gap: 1.25rem;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+            transition: var(--transition-base);
+        }
+
+        .contact-info-card:hover {
+            transform: translateX(4px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--navy);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
+
+        .contact-info-card h4 {
+            color: var(--navy);
+            margin-bottom: 0.25rem;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .contact-info-card p, .contact-info-card a {
+            color: var(--dark-gray);
+            font-size: 0.95rem;
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        /* Contact Form */
+        .contact-form-wrapper {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 3rem;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.06);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.25rem;
+        }
+
+        @media (max-width: 600px) { .form-row { grid-template-columns: 1fr; } }
+
+        .form-field {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .form-field label {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--navy);
+        }
+
+        .form-input, .form-select, .form-textarea {
+            width: 100%;
+            padding: 0.85rem 1rem;
+            border: 1.5px solid var(--light-gray);
+            border-radius: var(--radius-md);
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            color: var(--navy);
+            background: var(--off-white);
+            transition: var(--transition-fast);
+            outline: none;
+        }
+
+        .form-input:focus, .form-select:focus, .form-textarea:focus {
+            border-color: var(--accent-blue);
+            background: var(--white);
+            box-shadow: 0 0 0 3px rgba(0,119,182,0.1);
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 130px;
+        }
+
+        /* Success state */
+        .form-success {
+            display: none;
+            background: rgba(0,119,182,0.08);
+            border: 1.5px solid var(--accent-blue);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+
+        .form-success i {
+            font-size: 2.5rem;
+            color: var(--accent-blue);
+            display: block;
+            margin-bottom: 0.75rem;
+        }
+
+        /* Hours table */
+        .hours-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+
+        .hours-table td {
+            padding: 0.4rem 0;
+            color: var(--dark-gray);
+        }
+
+        .hours-table td:last-child {
+            text-align: right;
+            font-weight: 600;
+            color: var(--navy);
+        }
+
+        .hours-table tr + tr td {
+            border-top: 1px solid var(--light-gray);
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="navbar">
+        <div class="container nav-content">
+            <a href="index.html" class="brand-logo">
+                <i class="ri-flight-takeoff-line" style="color: var(--accent-blue); font-size: 1.8rem;"></i>
+                <strong>SKATS</strong> <span>Travels & Tours</span>
+            </a>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="services.html">Services</a>
+                <a href="tours.html">Tours</a>
+                <a href="destinations.html">Destinations</a>
+                <a href="flights.html">Flight Booking</a>
+                <a href="visa-assistance.html">Visa Assistance</a>
+                <a href="blog.html">Blog</a>
+            </nav>
+            <div class="nav-actions"><a href="contact.html" class="btn btn-primary">Book Your Trip</a></div>
+            <button class="mobile-menu-btn"><i class="ri-menu-line"></i></button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Page Hero -->
+        <section class="hero" style="min-height: 45vh; display:flex; align-items:center; background-image: linear-gradient(rgba(11,37,69,0.88), rgba(11,37,69,0.88)), url('https://images.unsplash.com/photo-1542296332-2e4473faf563?q=80&w=2070&auto=format&fit=crop'); background-size:cover; background-position:center; color:white;">
+            <div class="container fade-up" style="text-align:center;">
+                <span style="color:var(--gold); font-weight:600; text-transform:uppercase; letter-spacing:1px; font-size:0.85rem; display:block; margin-bottom:1rem;">We're Here for You</span>
+                <h1 style="color:white; margin-bottom:1rem;">Get In Touch.</h1>
+                <p style="color:rgba(255,255,255,0.8); max-width:600px; margin:0 auto; font-size:1.05rem;">Book a consultation, request a quote, or simply ask a question. Our team is ready to help plan your next journey.</p>
+            </div>
+        </section>
+
+        <section class="section-padding bg-light">
+            <div class="container">
+                <div class="contact-grid fade-up">
+
+                    <!-- Left: Info -->
+                    <div>
+                        <h2 style="margin-bottom:0.5rem;">Our Offices</h2>
+                        <p style="color:var(--dark-gray); margin-bottom:2rem;">Reach us at either of our Nigerian offices, by phone, or online.</p>
+
+                        <div class="contact-info-card">
+                            <div class="contact-icon"><i class="ri-map-pin-line"></i></div>
+                            <div>
+                                <h4>Akure Office</h4>
+                                <p>1 Owo Avenue, Ijapo Estate First Gate,<br>Akure, Ondo State.</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-info-card">
+                            <div class="contact-icon"><i class="ri-map-pin-line"></i></div>
+                            <div>
+                                <h4>Abuja Office</h4>
+                                <p>Suite D206, Garki Mall, Off Damaturu Crescent,<br>Garki, Abuja, FCT.</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-info-card">
+                            <div class="contact-icon"><i class="ri-phone-line"></i></div>
+                            <div>
+                                <h4>Phone</h4>
+                                <a href="tel:+2348170000057" style="display:block;">+234 817 000 0057</a>
+                                <a href="tel:+2348130833062" style="display:block;">+234 813 083 3062</a>
+                            </div>
+                        </div>
+
+                        <div class="contact-info-card">
+                            <div class="contact-icon"><i class="ri-mail-line"></i></div>
+                            <div>
+                                <h4>Email</h4>
+                                <a href="mailto:Skatsledconsult@gmail.com">Skatsledconsult@gmail.com</a>
+                            </div>
+                        </div>
+
+                        <div class="contact-info-card">
+                            <div class="contact-icon" style="background:var(--accent-blue);"><i class="ri-whatsapp-line"></i></div>
+                            <div>
+                                <h4>WhatsApp</h4>
+                                <a href="https://wa.me/2348130833062" target="_blank">Chat with us on WhatsApp</a>
+                            </div>
+                        </div>
+
+                        <!-- Business Hours -->
+                        <div style="background:var(--white); border-radius:var(--radius-md); padding:1.75rem; box-shadow:0 8px 25px rgba(0,0,0,0.05);">
+                            <h4 style="color:var(--navy); margin-bottom:1rem; font-size:0.9rem; text-transform:uppercase; letter-spacing:0.5px;">Business Hours</h4>
+                            <table class="hours-table">
+                                <tr><td>Monday – Friday</td><td>8:00 AM – 6:00 PM</td></tr>
+                                <tr><td>Saturday</td><td>9:00 AM – 4:00 PM</td></tr>
+                                <tr><td>Sunday</td><td>Emergency Enquiries Only</td></tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Right: Form -->
+                    <div class="contact-form-wrapper">
+                        <h2 style="margin-bottom:0.5rem; font-size:2rem;">Send Us a Message</h2>
+                        <p style="color:var(--dark-gray); margin-bottom:2rem;">Fill in the form below and we'll respond within 24 hours.</p>
+
+                        <!-- Web3Forms powered -->
+                        <form id="contact-form" action="https://api.web3forms.com/submit" method="POST">
+                            <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
+                            <input type="hidden" name="subject" value="New Travel Enquiry — SKATS Travels & Tours">
+                            <input type="hidden" name="from_name" value="SKATS Travels Website">
+                            <input type="hidden" name="redirect" value="">
+
+                            <div class="form-row">
+                                <div class="form-field">
+                                    <label for="first-name">First Name *</label>
+                                    <input type="text" id="first-name" name="first_name" class="form-input" placeholder="John" required>
+                                </div>
+                                <div class="form-field">
+                                    <label for="last-name">Last Name *</label>
+                                    <input type="text" id="last-name" name="last_name" class="form-input" placeholder="Smith" required>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-field">
+                                    <label for="email">Email Address *</label>
+                                    <input type="email" id="email" name="email" class="form-input" placeholder="john@example.com" required>
+                                </div>
+                                <div class="form-field">
+                                    <label for="phone">Phone Number</label>
+                                    <input type="tel" id="phone" name="phone" class="form-input" placeholder="+234 800 000 0000">
+                                </div>
+                            </div>
+
+                            <div class="form-field">
+                                <label for="service">Service Required *</label>
+                                <select id="service" name="service" class="form-select" required>
+                                    <option value="" disabled selected>Select a service...</option>
+                                    <option value="Flight Booking">Flight Booking</option>
+                                    <option value="Tour Package">Tour Package Enquiry</option>
+                                    <option value="Visa Assistance">Visa Assistance</option>
+                                    <option value="Hotel Reservation">Hotel Reservation</option>
+                                    <option value="Airport Transfer">Airport Transfer</option>
+                                    <option value="Corporate Travel">Corporate Travel</option>
+                                    <option value="General Enquiry">General Enquiry</option>
+                                </select>
+                            </div>
+
+                            <div class="form-field">
+                                <label for="destination">Destination (if applicable)</label>
+                                <input type="text" id="destination" name="destination" class="form-input" placeholder="e.g. Dubai, London, Canada">
+                            </div>
+
+                            <div class="form-field">
+                                <label for="message">Message *</label>
+                                <textarea id="message" name="message" class="form-textarea" placeholder="Tell us about your travel plans, travel dates, number of passengers, and any specific requirements..." required></textarea>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary" id="submit-btn" style="width:100%; padding:1rem; font-size:1rem;">
+                                <i class="ri-send-plane-line"></i> Send Enquiry
+                            </button>
+                        </form>
+
+                        <div class="form-success" id="form-success">
+                            <i class="ri-checkbox-circle-fill"></i>
+                            <h4 style="color:var(--navy); margin-bottom:0.5rem;">Message Received!</h4>
+                            <p style="color:var(--dark-gray); margin:0;">Thank you for your enquiry. A SKATS travel specialist will reach out within 24 hours.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <a href="index.html" class="brand-logo"><i class="ri-flight-takeoff-line"></i><strong>SKATS</strong></a>
+                <p>Premium aviation services, curated tour packages, and expert international travel consultation.</p>
+                <div style="display:flex; gap:1rem; margin-top:1.5rem;">
+                    <a href="#" style="color:var(--white); font-size:1.2rem;"><i class="ri-facebook-fill"></i></a>
+                    <a href="#" style="color:var(--white); font-size:1.2rem;"><i class="ri-instagram-line"></i></a>
+                    <a href="#" style="color:var(--white); font-size:1.2rem;"><i class="ri-linkedin-fill"></i></a>
+                </div>
+            </div>
+            <div class="footer-links"><h4>Services</h4><ul>
+                <li><a href="flights.html">Flight Booking</a></li>
+                <li><a href="tours.html">Tour Packages</a></li>
+                <li><a href="visa-assistance.html">Visa Assistance</a></li>
+                <li><a href="contact.html">Corporate Travel</a></li>
+            </ul></div>
+            <div class="footer-links"><h4>Company</h4><ul>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="destinations.html">Destinations</a></li>
+                <li><a href="blog.html">Travel Guide</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul></div>
+            <div class="footer-links"><h4>Contact</h4><ul>
+                <li style="display:flex; gap:0.5rem; color:rgba(255,255,255,0.7);"><i class="ri-map-pin-line"></i> 1 Owo Avenue, Ijapo Estate First Gate, Akure</li>
+                <li style="display:flex; gap:0.5rem; margin-top:0.75rem; color:rgba(255,255,255,0.7);"><i class="ri-phone-line"></i> <a href="tel:+2348170000057">+234 817 000 0057</a></li>
+                <li style="display:flex; gap:0.5rem; color:rgba(255,255,255,0.7);"><i class="ri-mail-line"></i> <a href="mailto:Skatsledconsult@gmail.com">Skatsledconsult@gmail.com</a></li>
+            </ul></div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
+                <span>&copy; 2026 SKATS Travels & Tours. All rights reserved.</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        document.getElementById('contact-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const btn = document.getElementById('submit-btn');
+            btn.innerHTML = '<i class="ri-loader-4-line"></i> Sending...';
+            btn.disabled = true;
+
+            const formData = new FormData(this);
+            const response = await fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                body: formData
+            });
+
+            if (response.ok) {
+                this.style.display = 'none';
+                document.getElementById('form-success').style.display = 'block';
+            } else {
+                btn.innerHTML = '<i class="ri-send-plane-line"></i> Send Enquiry';
+                btn.disabled = false;
+                alert('There was an error. Please try again or contact us directly via WhatsApp.');
+            }
+        });
+    </script>
+</body>
+</html>

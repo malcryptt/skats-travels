@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Booking | SKATS Travels & Tours</title>
+    <meta name="description" content="Book international flights with SKATS Travels & Tours. Search and compare fares with expert travel agent support.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <style>
+        /* ─── Flight Booking Widget ─── */
+        .booking-hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+            background-image: linear-gradient(135deg, rgba(11,37,69,0.92) 0%, rgba(0,119,182,0.80) 100%),
+                              url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=2074&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .booking-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 70% 50%, rgba(0,119,182,0.25) 0%, transparent 60%);
+        }
+
+        .booking-widget {
+            background: rgba(255,255,255,0.97);
+            backdrop-filter: blur(20px);
+            border-radius: var(--radius-lg);
+            padding: 3rem;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.25);
+            margin-top: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .trip-type-tabs {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid var(--light-gray);
+            padding-bottom: 1rem;
+        }
+
+        .trip-tab {
+            padding: 0.5rem 1.5rem;
+            border: none;
+            background: none;
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--medium-gray);
+            cursor: pointer;
+            border-radius: 50px;
+            transition: var(--transition-base);
+        }
+
+        .trip-tab.active {
+            background: var(--navy);
+            color: var(--white);
+        }
+
+        .booking-form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 1rem;
+            align-items: end;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .form-group label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--dark-gray);
+        }
+
+        .form-group .input-wrapper {
+            position: relative;
+        }
+
+        .form-group .input-wrapper i {
+            position: absolute;
+            left: 0.75rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--accent-blue);
+            font-size: 1.1rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.85rem 0.85rem 0.85rem 2.5rem;
+            border: 1.5px solid var(--light-gray);
+            border-radius: var(--radius-md);
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            color: var(--navy);
+            background: var(--off-white);
+            transition: var(--transition-fast);
+            outline: none;
+        }
+
+        .form-control:focus {
+            border-color: var(--accent-blue);
+            background: var(--white);
+            box-shadow: 0 0 0 3px rgba(0,119,182,0.1);
+        }
+
+        .swap-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: var(--navy);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            margin-bottom: 0.25rem;
+            transition: var(--transition-base);
+            align-self: flex-end;
+            flex-shrink: 0;
+        }
+
+        .swap-btn:hover {
+            background: var(--accent-blue);
+            transform: rotate(180deg);
+        }
+
+        .search-btn {
+            background: var(--navy);
+            color: white;
+            padding: 0.9rem 2rem;
+            border: none;
+            border-radius: var(--radius-md);
+            font-family: var(--font-body);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition-base);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .search-btn:hover {
+            background: var(--accent-blue);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,119,182,0.3);
+        }
+
+        /* Popular Routes */
+        .route-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: rgba(255,255,255,0.12);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.25);
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: var(--transition-base);
+            backdrop-filter: blur(4px);
+        }
+
+        .route-chip:hover {
+            background: rgba(255,255,255,0.25);
+        }
+
+        /* Why Book With Us */
+        .why-book-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .why-book-item {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .why-book-item i {
+            font-size: 2.5rem;
+            color: var(--accent-blue);
+            margin-bottom: 1rem;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="navbar">
+        <div class="container nav-content">
+            <a href="index.html" class="brand-logo">
+                <i class="ri-flight-takeoff-line" style="color: var(--accent-blue); font-size: 1.8rem;"></i>
+                <strong>SKATS</strong> <span>Travels & Tours</span>
+            </a>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="services.html">Services</a>
+                <a href="tours.html">Tours</a>
+                <a href="destinations.html">Destinations</a>
+                <a href="flights.html" class="active">Flight Booking</a>
+                <a href="visa-assistance.html">Visa Assistance</a>
+                <a href="blog.html">Blog</a>
+            </nav>
+            <div class="nav-actions">
+                <a href="contact.html" class="btn btn-primary">Book Your Trip</a>
+            </div>
+            <button class="mobile-menu-btn" aria-label="Toggle menu">
+                <i class="ri-menu-line"></i>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Booking Hero -->
+        <section class="booking-hero">
+            <div class="container" style="position:relative; z-index:2;">
+                <div class="fade-up">
+                    <p style="color:var(--gold); font-weight:600; text-transform:uppercase; letter-spacing:1.5px; font-size:0.8rem; margin-bottom:0.75rem;">
+                        <i class="ri-flight-takeoff-line"></i> &nbsp; Book With Confidence
+                    </p>
+                    <h1 style="color:white; margin-bottom:0.5rem;">Find Your Flight.</h1>
+                    <p style="color:rgba(255,255,255,0.75); font-size:1.05rem; margin-bottom:0.5rem;">
+                        Agent-assisted bookings for premium fares on all major international carriers.
+                    </p>
+                </div>
+
+                <!-- Popular Routes -->
+                <div style="display:flex; flex-wrap:wrap; gap:0.75rem; margin-bottom:2rem;" class="fade-up">
+                    <span style="color:rgba(255,255,255,0.6); font-size:0.8rem; align-self:center;">Popular:</span>
+                    <span class="route-chip"><i class="ri-flight-takeoff-line"></i> Lagos → London</span>
+                    <span class="route-chip"><i class="ri-flight-takeoff-line"></i> Abuja → Dubai</span>
+                    <span class="route-chip"><i class="ri-flight-takeoff-line"></i> Lagos → New York</span>
+                    <span class="route-chip"><i class="ri-flight-takeoff-line"></i> Abuja → Toronto</span>
+                </div>
+
+                <!-- Booking Widget -->
+                <div class="booking-widget fade-up">
+                    <div class="trip-type-tabs">
+                        <button class="trip-tab active" id="tab-return">Return</button>
+                        <button class="trip-tab" id="tab-oneway">One-way</button>
+                        <button class="trip-tab" id="tab-multi">Multi-city</button>
+                    </div>
+
+                    <form action="contact.html" method="GET" id="flight-search-form">
+                        <div class="booking-form-grid" style="margin-bottom:1rem;">
+                            <div class="form-group" style="grid-column: span 2 / span 2;">
+                                <label for="from-city"><i class="ri-map-pin-2-line" style="color:var(--accent-blue); margin-right:4px;"></i>From</label>
+                                <div class="input-wrapper">
+                                    <i class="ri-flight-takeoff-line"></i>
+                                    <input type="text" id="from-city" name="from" class="form-control" placeholder="City or Airport" required>
+                                </div>
+                            </div>
+
+                            <button type="button" class="swap-btn" aria-label="Swap cities" onclick="swapCities()">
+                                <i class="ri-arrow-left-right-line"></i>
+                            </button>
+
+                            <div class="form-group" style="grid-column: span 2 / span 2;">
+                                <label for="to-city"><i class="ri-map-pin-line" style="color:var(--accent-blue); margin-right:4px;"></i>To</label>
+                                <div class="input-wrapper">
+                                    <i class="ri-flight-land-line"></i>
+                                    <input type="text" id="to-city" name="to" class="form-control" placeholder="City or Airport" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Departure</label>
+                                <div class="input-wrapper">
+                                    <i class="ri-calendar-event-line"></i>
+                                    <input type="date" name="departure" class="form-control" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group" id="return-date-group">
+                                <label>Return</label>
+                                <div class="input-wrapper">
+                                    <i class="ri-calendar-check-line"></i>
+                                    <input type="date" name="return" class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Passengers</label>
+                                <div class="input-wrapper">
+                                    <i class="ri-user-3-line"></i>
+                                    <select name="passengers" class="form-control">
+                                        <option value="1">1 Adult</option>
+                                        <option value="2">2 Adults</option>
+                                        <option value="3">3 Adults</option>
+                                        <option value="4">4 Adults</option>
+                                        <option value="5+">5+ Travellers</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Class</label>
+                                <div class="input-wrapper">
+                                    <i class="ri-vip-crown-line"></i>
+                                    <select name="class" class="form-control">
+                                        <option value="economy">Economy</option>
+                                        <option value="premium-economy">Premium Economy</option>
+                                        <option value="business">Business</option>
+                                        <option value="first">First Class</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="search-btn">
+                            <i class="ri-search-line"></i> Search Flights — Our Agents Will Assist You
+                        </button>
+                    </form>
+
+                    <p style="font-size:0.8rem; color:var(--medium-gray); margin-top:1rem; text-align:center;">
+                        <i class="ri-information-line"></i> After submitting, our travel team will contact you within 2 hours with personalized flight options and fares.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Book With Us -->
+        <section class="section-padding bg-light">
+            <div class="container">
+                <div class="section-header fade-up">
+                    <h2>Why Book Through SKATS?</h2>
+                    <p style="color:var(--dark-gray);">Beyond a simple flight search engine — a fully managed travel service.</p>
+                </div>
+                <div class="why-book-grid fade-up">
+                    <div class="why-book-item">
+                        <i class="ri-hand-coin-line"></i>
+                        <h4>Best Fare Guarantee</h4>
+                        <p style="color:var(--dark-gray); font-size:0.9rem;">We negotiate competitive fares with airlines and consolidators unavailable on public booking platforms.</p>
+                    </div>
+                    <div class="why-book-item">
+                        <i class="ri-customer-service-2-line"></i>
+                        <h4>Dedicated Agent Support</h4>
+                        <p style="color:var(--dark-gray); font-size:0.9rem;">A real person manages your booking from inquiry to landing — including any mid-journey disruptions.</p>
+                    </div>
+                    <div class="why-book-item">
+                        <i class="ri-shield-check-line"></i>
+                        <h4>Verified Carriers Only</h4>
+                        <p style="color:var(--dark-gray); font-size:0.9rem;">We work exclusively with IATA-accredited carriers and comply with international aviation standards.</p>
+                    </div>
+                    <div class="why-book-item">
+                        <i class="ri-repeat-line"></i>
+                        <h4>Free Rebooking Support</h4>
+                        <p style="color:var(--dark-gray); font-size:0.9rem;">Sudden cancellation? We handle reissues and reschedules at no additional consultation charge.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <a href="index.html" class="brand-logo"><i class="ri-flight-takeoff-line"></i><strong>SKATS</strong></a>
+                <p>Premium aviation services, curated tour packages, and expert international travel consultation.</p>
+                <div style="display:flex; gap:1rem; margin-top:1.5rem;">
+                    <a href="#" style="color:var(--white); font-size:1.2rem;"><i class="ri-facebook-fill"></i></a>
+                    <a href="#" style="color:var(--white); font-size:1.2rem;"><i class="ri-instagram-line"></i></a>
+                    <a href="#" style="color:var(--white); font-size:1.2rem;"><i class="ri-linkedin-fill"></i></a>
+                </div>
+            </div>
+            <div class="footer-links"><h4>Services</h4><ul>
+                <li><a href="flights.html">Flight Booking</a></li>
+                <li><a href="tours.html">Tour Packages</a></li>
+                <li><a href="visa-assistance.html">Visa Assistance</a></li>
+                <li><a href="contact.html">Corporate Travel</a></li>
+            </ul></div>
+            <div class="footer-links"><h4>Company</h4><ul>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="destinations.html">Destinations</a></li>
+                <li><a href="blog.html">Travel Guide</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul></div>
+            <div class="footer-links"><h4>Contact</h4><ul>
+                <li style="color:rgba(255,255,255,0.7);"><i class="ri-phone-line"></i> <a href="tel:+2348170000057">+234 817 000 0057</a></li>
+                <li style="color:rgba(255,255,255,0.7);"><i class="ri-mail-line"></i> <a href="mailto:Skatsledconsult@gmail.com">Skatsledconsult@gmail.com</a></li>
+            </ul></div>
+        </div>
+        <div class="footer-bottom"><div class="container"><span>&copy; 2026 SKATS Travels & Tours. All rights reserved.</span></div></div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Tab switching
+        document.querySelectorAll('.trip-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.trip-tab').forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                const returnGroup = document.getElementById('return-date-group');
+                if (tab.id === 'tab-oneway') returnGroup.style.display = 'none';
+                else returnGroup.style.display = '';
+            });
+        });
+
+        // Swap cities
+        function swapCities() {
+            const from = document.getElementById('from-city');
+            const to = document.getElementById('to-city');
+            const temp = from.value;
+            from.value = to.value;
+            to.value = temp;
+        }
+    </script>
+</body>
+</html>

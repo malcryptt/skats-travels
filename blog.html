@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Guide & Blog | SKATS Travels & Tours</title>
+    <meta name="description" content="Read travel tips, destination guides, visa information, and flight advice from SKATS Travels & Tours experts.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <style>
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .blog-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+            transition: var(--transition-base);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .blog-image {
+            height: 240px;
+            overflow: hidden;
+        }
+
+        .blog-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform var(--transition-slow);
+        }
+
+        .blog-card:hover .blog-image img {
+            transform: scale(1.05);
+        }
+
+        .blog-content {
+            padding: 1.75rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .blog-meta {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .blog-category {
+            background: rgba(0,119,182,0.1);
+            color: var(--accent-blue);
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .blog-date {
+            font-size: 0.8rem;
+            color: var(--medium-gray);
+        }
+
+        .blog-content h3 {
+            font-size: 1.3rem;
+            font-family: var(--font-heading);
+            color: var(--navy);
+            margin-bottom: 0.75rem;
+            line-height: 1.4;
+        }
+
+        .blog-content p {
+            color: var(--dark-gray);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .blog-read-more {
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            color: var(--navy);
+        }
+
+        .blog-read-more i {
+            transition: transform var(--transition-base);
+        }
+
+        .blog-card:hover .blog-read-more i {
+            transform: translateX(4px);
+        }
+
+        /* Featured Article */
+        .featured-article {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+            margin-bottom: 4rem;
+        }
+
+        .featured-article img {
+            width: 100%;
+            height: 100%;
+            min-height: 400px;
+            object-fit: cover;
+        }
+
+        .featured-article-content {
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        @media (max-width: 768px) {
+            .featured-article {
+                grid-template-columns: 1fr;
+            }
+            .featured-article img { min-height: 250px; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="navbar">
+        <div class="container nav-content">
+            <a href="index.html" class="brand-logo">
+                <i class="ri-flight-takeoff-line" style="color: var(--accent-blue); font-size: 1.8rem;"></i>
+                <strong>SKATS</strong> <span>Travels & Tours</span>
+            </a>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="services.html">Services</a>
+                <a href="tours.html">Tours</a>
+                <a href="destinations.html">Destinations</a>
+                <a href="flights.html">Flight Booking</a>
+                <a href="visa-assistance.html">Visa Assistance</a>
+                <a href="blog.html" class="active">Blog</a>
+            </nav>
+            <div class="nav-actions"><a href="contact.html" class="btn btn-primary">Book Your Trip</a></div>
+            <button class="mobile-menu-btn"><i class="ri-menu-line"></i></button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Page Hero -->
+        <section class="hero" style="min-height: 45vh; display:flex; align-items:center; background-image: linear-gradient(rgba(11,37,69,0.8), rgba(11,37,69,0.8)), url('https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?q=80&w=2070&auto=format&fit=crop'); background-size:cover; background-position:center; color:white;">
+            <div class="container fade-up" style="text-align:center;">
+                <span style="color:var(--gold); font-weight:600; text-transform:uppercase; letter-spacing:1px; font-size:0.85rem; display:block; margin-bottom:1rem;">Knowledge & Inspiration</span>
+                <h1 style="color:white; margin-bottom:1rem;">The SKATS Travel Guide.</h1>
+                <p style="color:rgba(255,255,255,0.8); max-width:600px; margin:0 auto; font-size:1.05rem;">Expert destination guides, visa tips, and travel planning advice from our specialist team.</p>
+            </div>
+        </section>
+
+        <section class="section-padding">
+            <div class="container">
+
+                <!-- Featured Article -->
+                <div class="featured-article fade-up">
+                    <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?q=80&w=2070&auto=format&fit=crop" alt="London at Night">
+                    <div class="featured-article-content">
+                        <div class="blog-meta" style="margin-bottom:1.5rem;">
+                            <span class="blog-category">Destination Guide</span>
+                            <span class="blog-date">August 2026</span>
+                        </div>
+                        <h2 style="font-family:var(--font-heading); color:var(--navy); margin-bottom:1rem; line-height:1.3;">The Definitive Guide to Visiting London in 2026</h2>
+                        <p style="color:var(--dark-gray); line-height:1.8; margin-bottom:2rem;">From the world-class museums of South Kensington to the vibrant food scenes of Borough Market — plan your London visit with our expert guide covering entry requirements, transport, and must-visit experiences.</p>
+                        <a href="contact.html" class="btn btn-primary">Request London Package <i class="ri-arrow-right-line"></i></a>
+                    </div>
+                </div>
+
+                <!-- Blog Grid -->
+                <div class="blog-grid fade-up">
+
+                    <div class="blog-card">
+                        <div class="blog-image">
+                            <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=2070&auto=format&fit=crop" alt="Dubai Marina" loading="lazy">
+                        </div>
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <span class="blog-category">Destination</span>
+                                <span class="blog-date">July 2026</span>
+                            </div>
+                            <h3>Dubai: Everything You Need to Know Before You Go</h3>
+                            <p>Visa requirements, the best areas to stay, local customs, and the finest dining experiences in the UAE's most iconic city.</p>
+                            <a href="contact.html" class="blog-read-more">Plan Dubai Trip <i class="ri-arrow-right-line"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="blog-card">
+                        <div class="blog-image">
+                            <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=2026&auto=format&fit=crop" alt="Passport Documents" loading="lazy">
+                        </div>
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <span class="blog-category" style="background:rgba(212,163,115,0.15); color:#a07040;">Visa Tips</span>
+                                <span class="blog-date">June 2026</span>
+                            </div>
+                            <h3>5 Common Visa Application Mistakes and How to Avoid Them</h3>
+                            <p>Our documentation specialists share the most common errors applicants make and how meticulous preparation can strengthen your case.</p>
+                            <a href="visa-assistance.html" class="blog-read-more">Get Visa Help <i class="ri-arrow-right-line"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="blog-card">
+                        <div class="blog-image">
+                            <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=2074&auto=format&fit=crop" alt="Airport Lounge" loading="lazy">
+                        </div>
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <span class="blog-category" style="background:rgba(11,37,69,0.08); color:var(--navy);">Flight Tips</span>
+                                <span class="blog-date">June 2026</span>
+                            </div>
+                            <h3>How to Navigate a Long-Haul Flight Like a Business Class Passenger</h3>
+                            <p>Upgrade tips, lounge access secrets, packing strategies, and seat selection advice for comfortable long-distance travel on any budget.</p>
+                            <a href="flights.html" class="blog-read-more">Book Your Flight <i class="ri-arrow-right-line"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="blog-card">
+                        <div class="blog-image">
+                            <img src="https://images.unsplash.com/photo-1514282401047-d79a71a590e8?q=80&w=1965&auto=format&fit=crop" alt="Maldives" loading="lazy">
+                        </div>
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <span class="blog-category">Destination</span>
+                                <span class="blog-date">May 2026</span>
+                            </div>
+                            <h3>The Maldives: Why It Remains the World's Top Honeymoon Destination</h3>
+                            <p>An in-depth look at the best atolls, overwater resorts, and experiences that make the Maldives genuinely unrivalled for couples.</p>
+                            <a href="tours.html" class="blog-read-more">See Maldives Packages <i class="ri-arrow-right-line"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="blog-card">
+                        <div class="blog-image">
+                            <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=2070&auto=format&fit=crop" alt="Hotel Resort" loading="lazy">
+                        </div>
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <span class="blog-category" style="background:rgba(11,37,69,0.08); color:var(--navy);">Travel Planning</span>
+                                <span class="blog-date">May 2026</span>
+                            </div>
+                            <h3>How to Choose the Right Hotel: A Guide for Business and Leisure Travellers</h3>
+                            <p>Location, loyalty programmes, breakfast inclusions, and what "4-star" really means in different parts of the world.</p>
+                            <a href="contact.html" class="blog-read-more">Book a Hotel <i class="ri-arrow-right-line"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="blog-card">
+                        <div class="blog-image">
+                            <img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?q=80&w=1988&auto=format&fit=crop" alt="Tokyo City" loading="lazy">
+                        </div>
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <span class="blog-category">Destination</span>
+                                <span class="blog-date">April 2026</span>
+                            </div>
+                            <h3>Tokyo in 7 Days: The Perfect Itinerary for First-Time Visitors</h3>
+                            <p>From the neon of Shibuya to the tranquility of Shinjuku Gyoen — plan an unforgettable week in one of Asia's most dynamic cities.</p>
+                            <a href="contact.html" class="blog-read-more">Plan Tokyo Trip <i class="ri-arrow-right-line"></i></a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <a href="index.html" class="brand-logo"><i class="ri-flight-takeoff-line"></i><strong>SKATS</strong></a>
+                <p>Premium aviation services, curated tour packages, and expert international travel consultation.</p>
+            </div>
+            <div class="footer-links"><h4>Services</h4><ul>
+                <li><a href="flights.html">Flight Booking</a></li>
+                <li><a href="tours.html">Tour Packages</a></li>
+                <li><a href="visa-assistance.html">Visa Assistance</a></li>
+            </ul></div>
+            <div class="footer-links"><h4>Company</h4><ul>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="destinations.html">Destinations</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul></div>
+            <div class="footer-links"><h4>Contact</h4><ul>
+                <li style="color:rgba(255,255,255,0.7);"><a href="tel:+2348170000057">+234 817 000 0057</a></li>
+                <li style="color:rgba(255,255,255,0.7);"><a href="mailto:Skatsledconsult@gmail.com">Skatsledconsult@gmail.com</a></li>
+            </ul></div>
+        </div>
+        <div class="footer-bottom"><div class="container"><span>&copy; 2026 SKATS Travels & Tours. All rights reserved.</span></div></div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

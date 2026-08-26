@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destinations | SKATS Travels & Tours</title>
+    <meta name="description"
+        content="Discover breathtaking international destinations with SKATS Travels & Tours. Explore Europe, Asia, Africa, and the Americas.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;500;600;700&family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+    <!-- Remix Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- GSAP for Animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <header class="navbar">
+        <div class="container nav-content">
+            <a href="index.html" class="brand-logo">
+                <i class="ri-flight-takeoff-line" style="color: var(--accent-blue); font-size: 1.8rem;"></i>
+                <strong>SKATS</strong> <span>Travels & Tours</span>
+            </a>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="services.html">Services</a>
+                <a href="tours.html">Tours</a>
+                <a href="destinations.html" class="active">Destinations</a>
+                <a href="flights.html">Flight Booking</a>
+                <a href="visa-assistance.html">Visa Assistance</a>
+                <a href="blog.html">Blog</a>
+            </nav>
+            <div class="nav-actions">
+                <a href="contact.html" class="btn btn-primary">Book Your Trip</a>
+            </div>
+            <button class="mobile-menu-btn" aria-label="Toggle menu">
+                <i class="ri-menu-line"></i>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Page Hero -->
+        <section class="hero" style="min-height: 50vh; display:flex; align-items:center; background-image: linear-gradient(rgba(11, 37, 69, 0.7), rgba(11, 37, 69, 0.7)), url('https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?q=80&w=2070&auto=format&fit=crop'); background-size: cover; background-position: center; color: white;">
+            <div class="container fade-up" style="text-align:center;">
+                <span style="color:var(--gold); font-weight:600; text-transform:uppercase; letter-spacing:1px; font-size:0.85rem; display:block; margin-bottom:1rem;">Global Reach</span>
+                <h1 style="color: white; margin-bottom: 1rem;">Explore the World.</h1>
+                <p style="color: rgba(255,255,255,0.8); max-width: 600px; margin: 0 auto; font-size: 1.1rem;">From the historic streets of Europe to the pristine beaches of the Indian Ocean, discover our premium destinations.</p>
+            </div>
+        </section>
+
+        <!-- Region: Europe -->
+        <section class="section-padding">
+            <div class="container">
+                <div class="section-header fade-up">
+                    <h2 style="margin-bottom:0.5rem;">Europe</h2>
+                    <p style="color:var(--dark-gray);">Culture, history, and modern luxury.</p>
+                </div>
+                <div class="destination-grid fade-up">
+                    <div class="destination-card">
+                        <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?q=80&w=2070&auto=format&fit=crop" alt="London, UK">
+                        <div class="destination-overlay">
+                            <span class="destination-country">United Kingdom</span>
+                            <h3 class="destination-title">London</h3>
+                        </div>
+                    </div>
+                    <div class="destination-card">
+                        <img src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?q=80&w=2020&auto=format&fit=crop" alt="Paris, France">
+                        <div class="destination-overlay">
+                            <span class="destination-country">France</span>
+                            <h3 class="destination-title">Paris</h3>
+                        </div>
+                    </div>
+                    <div class="destination-card">
+                        <img src="https://images.unsplash.com/photo-1515542622106-78b28af7815d?q=80&w=2070&auto=format&fit=crop" alt="Rome, Italy">
+                        <div class="destination-overlay">
+                            <span class="destination-country">Italy</span>
+                            <h3 class="destination-title">Rome</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Region: Middle East & Asia -->
+        <section class="section-padding bg-light">
+            <div class="container">
+                <div class="section-header fade-up">
+                    <h2 style="margin-bottom:0.5rem;">Middle East & Asia</h2>
+                    <p style="color:var(--dark-gray);">Innovation, tradition, and breathtaking landscapes.</p>
+                </div>
+                <div class="destination-grid fade-up">
+                    <div class="destination-card">
+                        <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=2070&auto=format&fit=crop" alt="Dubai, UAE">
+                        <div class="destination-overlay">
+                            <span class="destination-country">United Arab Emirates</span>
+                            <h3 class="destination-title">Dubai</h3>
+                        </div>
+                    </div>
+                    <div class="destination-card">
+                        <img src="https://images.unsplash.com/photo-1514282401047-d79a71a590e8?q=80&w=1965&auto=format&fit=crop" alt="Maldives">
+                        <div class="destination-overlay">
+                            <span class="destination-country">South Asia</span>
+                            <h3 class="destination-title">The Maldives</h3>
+                        </div>
+                    </div>
+                    <div class="destination-card">
+                        <img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?q=80&w=1988&auto=format&fit=crop" alt="Tokyo, Japan">
+                        <div class="destination-overlay">
+                            <span class="destination-country">Japan</span>
+                            <h3 class="destination-title">Tokyo</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Region: Americas -->
+        <section class="section-padding">
+            <div class="container">
+                <div class="section-header fade-up">
+                    <h2 style="margin-bottom:0.5rem;">The Americas</h2>
+                    <p style="color:var(--dark-gray);">Iconic skylines and diverse natural wonders.</p>
+                </div>
+                <div class="destination-grid fade-up">
+                    <div class="destination-card">
+                        <img src="https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?q=80&w=2070&auto=format&fit=crop" alt="New York, USA">
+                        <div class="destination-overlay">
+                            <span class="destination-country">United States</span>
+                            <h3 class="destination-title">New York</h3>
+                        </div>
+                    </div>
+                    <div class="destination-card">
+                        <img src="https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?q=80&w=2070&auto=format&fit=crop" alt="Sydney, Australia (Bonus)">
+                        <div class="destination-overlay">
+                            <span class="destination-country">Australia</span>
+                            <h3 class="destination-title">Sydney</h3>
+                        </div>
+                    </div>
+                    <div class="destination-card">
+                        <img src="https://images.unsplash.com/photo-1518105779142-d975f22f1b0a?q=80&w=2070&auto=format&fit=crop" alt="Toronto, Canada">
+                        <div class="destination-overlay">
+                            <span class="destination-country">Canada</span>
+                            <h3 class="destination-title">Toronto</h3>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="text-align:center; margin-top: 4rem;" class="fade-up">
+                    <a href="contact.html" class="btn btn-primary">Plan Your Custom Itinerary <i class="ri-arrow-right-line"></i></a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <a href="index.html" class="brand-logo">
+                    <i class="ri-flight-takeoff-line"></i>
+                    <strong>SKATS</strong>
+                </a>
+                <p>Premium aviation services, curated tour packages, and expert international travel consultation.</p>
+                <div style="display:flex; gap:1rem; margin-top:1.5rem;">
+                    <a href="#" style="color:var(--white); font-size:1.2rem;"><i class="ri-facebook-fill"></i></a>
+                    <a href="#" style="color:var(--white); font-size:1.2rem;"><i class="ri-twitter-x-line"></i></a>
+                    <a href="#" style="color:var(--white); font-size:1.2rem;"><i class="ri-instagram-line"></i></a>
+                    <a href="#" style="color:var(--white); font-size:1.2rem;"><i class="ri-linkedin-fill"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-links">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="flights.html">Flight Booking</a></li>
+                    <li><a href="services.html">Hotel Reservations</a></li>
+                    <li><a href="tours.html">Tour Packages</a></li>
+                    <li><a href="visa-assistance.html">Visa Assistance</a></li>
+                    <li><a href="contact.html">Corporate Travel</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-links">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="destinations.html">Destinations</a></li>
+                    <li><a href="blog.html">Travel Guide</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-links">
+                <h4>Contact</h4>
+                <ul>
+                    <li style="display:flex; gap:0.5rem; color:rgba(255,255,255,0.7);"><i class="ri-map-pin-line text-gold"></i> 1 Owo Avenue, Ijapo Estate First Gate, Akure</li>
+                    <li style="display:flex; gap:0.5rem; color:rgba(255,255,255,0.7);"><i class="ri-map-pin-line text-gold"></i> Suite D206, Garki Mall, Abuja</li>
+                    <li style="display:flex; gap:0.5rem; margin-top:1rem;"><i class="ri-phone-line text-gold"></i> <a href="tel:+2348170000057">+234 817 000 0057</a></li>
+                    <li style="display:flex; gap:0.5rem;"><i class="ri-mail-line text-gold"></i> <a href="mailto:Skatsledconsult@gmail.com">Skatsledconsult@gmail.com</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="container" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
+                <span>&copy; 2026 SKATS Travels & Tours. All rights reserved.</span>
+                <div style="display:flex; gap:1.5rem;">
+                    <a href="#" style="color:rgba(255,255,255,0.5);">Privacy Policy</a>
+                    <a href="#" style="color:rgba(255,255,255,0.5);">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
