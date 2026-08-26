@@ -1,91 +1,107 @@
 /**
- * SKATS Travels & Tours - Main JavaScript
+ * SKATS Travels & Tours — Main JS
+ * Aircraft "punch through screen" effect via GSAP ScrollTrigger
  */
-
 document.addEventListener('DOMContentLoaded', () => {
-    
-    // 1. Navbar Glassmorphism on Scroll
-    const navbar = document.querySelector('.navbar');
-    
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
-        }
+
+  // ── Navbar scroll glass effect ──
+  const navbar = document.querySelector('.navbar');
+  const onScroll = () => navbar.classList.toggle('scrolled', window.scrollY > 60);
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  // ── Mobile menu ──
+  const mobileBtn   = document.querySelector('.mobile-menu-btn');
+  const navLinks    = document.querySelector('.nav-links');
+  const navActions  = document.querySelector('.nav-actions');
+  if (mobileBtn) {
+    mobileBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+      navActions.classList.toggle('open');
+      mobileBtn.querySelector('i').className =
+        navLinks.classList.contains('open') ? 'ri-close-line' : 'ri-menu-line';
     });
+  }
 
-    // 2. Mobile Menu Toggle (Simplified for now)
-    const mobileBtn = document.querySelector('.mobile-menu-btn');
-    const navLinks = document.querySelector('.nav-links');
-    const navActions = document.querySelector('.nav-actions');
+  // ── Scroll reveal (fade-up) ──
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
-    if (mobileBtn) {
-        mobileBtn.addEventListener('click', () => {
-            // Very basic toggle, will be enhanced via CSS
-            if (navLinks.style.display === 'flex') {
-                navLinks.style.display = 'none';
-                navActions.style.display = 'none';
-            } else {
-                navLinks.style.display = 'flex';
-                navLinks.style.flexDirection = 'column';
-                navLinks.style.position = 'absolute';
-                navLinks.style.top = '100%';
-                navLinks.style.left = '0';
-                navLinks.style.width = '100%';
-                navLinks.style.background = 'white';
-                navLinks.style.padding = '2rem';
-                navLinks.style.boxShadow = '0 10px 20px rgba(0,0,0,0.1)';
-                
-                navActions.style.display = 'flex';
-                navActions.style.position = 'absolute';
-                navActions.style.top = 'calc(100% + 200px)';
-                navActions.style.left = '2rem';
-            }
-        });
-    }
+  // ── GSAP: Aircraft "flying out of the screen" ──
+  if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+    gsap.registerPlugin(ScrollTrigger);
 
-    // 3. GSAP Animations (If GSAP is loaded)
-    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
-        gsap.registerPlugin(ScrollTrigger);
-
-        // A. 3D Aircraft Breakout Parallax Effect
-        // The plane should move UP and RIGHT and SCALE UP as user scrolls down,
-        // giving the illusion of taking off out of the container.
-        const plane = document.querySelector('.hero-breakout-plane');
-        if (plane) {
-            gsap.to(plane, {
-                scrollTrigger: {
-                    trigger: ".hero",
-                    start: "top top",
-                    end: "bottom top",
-                    scrub: 1.5, // Smooth scrubbing
-                },
-                y: -150, // Move up
-                x: 100,  // Move right
-                scale: 1.2, // Get larger (coming towards viewer)
-                rotationZ: 5, // Slight tilt
-                ease: "none"
-            });
+    const plane = document.querySelector('.breakout-plane');
+    if (plane) {
+      /**
+       * The effect works by increasing perspective depth (translateZ)
+       * and scale simultaneously, so the plane appears to rush TOWARD
+       * the viewer and break through the page boundary.
+       *
+       * - scaleX/Y grow the plane aggressively
+       * - translateZ (via motionPath or raw transform) pushes it forward
+       * - rotationX gives a slight nose-down banking feel
+       * - y moves it down slightly (as it "passes overhead")
+       * - The drop-shadow grows to simulate proximity lighting
+       */
+      gsap.timeline({
+        scrollTrigger: {
+          trigger: '.hero',
+          start: 'top top',
+          end: 'bottom top',
+          scrub: 1.8,
         }
-
-        // B. Scroll Reveal for Sections
-        const fadeUpElements = document.querySelectorAll('.fade-up');
-        fadeUpElements.forEach(el => {
-            gsap.fromTo(el, 
-                { opacity: 0, y: 50 },
-                { 
-                    scrollTrigger: {
-                        trigger: el,
-                        start: "top 85%",
-                        toggleActions: "play none none reverse"
-                    },
-                    opacity: 1, 
-                    y: 0, 
-                    duration: 0.8, 
-                    ease: "power2.out" 
-                }
-            );
-        });
+      })
+      .to(plane, {
+        scale: 2.2,
+        y: 180,
+        rotationX: -12,
+        rotationZ: -3,
+        transformOrigin: 'center center',
+        filter: 'drop-shadow(0 60px 120px rgba(0,60,120,.9)) drop-shadow(0 0 80px rgba(0,180,216,.5))',
+        ease: 'none',
+      });
     }
+
+    // ── Subtle parallax on hero photo card ──
+    const photoCard = document.querySelector('.hero-photo-card');
+    if (photoCard) {
+      gsap.to(photoCard, {
+        scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: 1 },
+        y: -60, ease: 'none',
+      });
+    }
+
+    // ── Parallax on hero background ──
+    const heroBg = document.querySelector('.hero-bg');
+    if (heroBg) {
+      gsap.to(heroBg, {
+        scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: 1 },
+        y: 80, ease: 'none',
+      });
+    }
+
+    // ── Animated stat counters ──
+    document.querySelectorAll('.stat-number[data-target]').forEach(el => {
+      const target = parseInt(el.dataset.target);
+      const suffix = el.dataset.suffix || '';
+      ScrollTrigger.create({
+        trigger: el,
+        start: 'top 85%',
+        onEnter: () => {
+          gsap.from({ val: 0 }, {
+            val: target, duration: 2, ease: 'power2.out',
+            onUpdate() { el.textContent = Math.round(this.targets()[0].val) + suffix; }
+          });
+        },
+        once: true,
+      });
+    });
+  }
 });
