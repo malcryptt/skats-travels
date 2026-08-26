@@ -97,7 +97,7 @@ p  { margin-bottom:1rem; }
   font-family:var(--font-heading); font-size:1.45rem;
   font-weight:700; color:var(--white);
 }
-.brand-logo img { height:50px; width:auto; border-radius:4px; object-fit:contain; }
+.brand-logo img { height:50px; width:auto; border-radius:4px; object-fit:contain; filter: brightness(0) invert(1); }
 .brand-logo div { display:none; } /* Hide text if logo is an image with text */
 .nav-links { display:flex; gap:2rem; }
 .nav-links a { color:rgba(255,255,255,.75); font-weight:500; font-size:.88rem; position:relative; }
