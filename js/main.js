@@ -4,6 +4,15 @@
  */
 document.addEventListener('DOMContentLoaded', () => {
 
+  // ── Preloader ──
+  window.addEventListener('load', () => {
+    const preloader = document.querySelector('.preloader');
+    if (preloader) {
+      preloader.classList.add('hidden');
+      setTimeout(() => preloader.style.display = 'none', 500);
+    }
+  });
+
   // ── Navbar scroll glass effect ──
   const navbar = document.querySelector('.navbar');
   const onScroll = () => navbar.classList.toggle('scrolled', window.scrollY > 60);
